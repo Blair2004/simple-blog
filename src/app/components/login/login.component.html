@@ -1,0 +1,48 @@
+<div class="container h-100 d-flex align-items-center">
+    <form class="form-signin w-100" [formGroup]="form" (submit)="login()">
+        <div class="row">
+            <div class="offset-md-2 col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                        </div>
+
+                        <div *ngIf="show.goodCredentials" class="alert alert-success" role="alert">
+                            {{ httpResponse }}
+                        </div>
+                        <div *ngIf="show.badCredentials" class="alert alert-danger" role="alert">
+                            {{ httpResponse }}
+                        </div>
+                        
+                        <div class="form-label-group">
+                            <label for="inputEmail">Username</label>
+                            <input type="email" [formControl]="form.get( 'username' )" [ngClass]="{ 'is-invalid' : isUsernameInvalid }" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus=""/>
+                            <div *ngIf="isUsernameInvalid" class="invalid-feedback">
+                            the username is not valid.
+                            </div>
+                        </div>
+                        
+                        <div class="form-label-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" [formControl]="form.get( 'password' )" [ngClass]="{ 'is-invalid' : isPasswordInvalid }" id="inputPassword" class="form-control" placeholder="Password" required="">
+                            <div *ngIf="isPasswordInvalid" class="invalid-feedback">
+                            the password is not valid
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+
+                        <button [disabled]="show.isSubmitting" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        
+                        <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

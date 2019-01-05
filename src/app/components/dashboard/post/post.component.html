@@ -1,0 +1,33 @@
+<div class="container p-2">
+    <div class="card">
+        <div class="card-body p-0">
+            <table class="table border-top-0">
+                <thead>
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Author</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let post of posts">
+                        <td scope="row">
+                            <h4>{{ post.title }}</h4>
+                            <p>{{ post.content }}</p>
+                        </td>
+                        <td>{{ post.author }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-sm btn-primary" [routerLink]="'/dashboard/posts/edit/' + post.id" role="button">Edit</a>
+                            <a name="" id="" class="btn btn-sm btn-danger" (click)="proceedDelete( post )"role="button">Delete</a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="posts.length === 0">
+                        <td colspan="2">
+                            No post has been created ! <a [routerLink]="'/dashboard/posts/create'">Would you like to create a new post ?</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
